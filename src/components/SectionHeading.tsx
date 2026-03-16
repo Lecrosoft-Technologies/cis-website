@@ -7,17 +7,22 @@ interface Props {
 }
 
 const SectionHeading = ({ label, title, description, center = true, light = false }: Props) => (
-  <div className={`mb-12 md:mb-16 ${center ? "text-center" : ""}`}>
+  <div className={`mb-14 md:mb-20 ${center ? "text-center" : ""}`}>
     {label && (
-      <span className={`inline-block text-xs font-semibold uppercase tracking-[0.2em] mb-3 ${light ? "text-primary-foreground/60" : "gradient-text"}`}>
+      <span className={`gsap-fade-up inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] mb-4 px-4 py-1.5 rounded-full border ${
+        light
+          ? "text-secondary border-secondary/30 bg-secondary/10"
+          : "text-primary border-primary/20 bg-primary/5"
+      }`}>
+        <span className={`w-1.5 h-1.5 rounded-full ${light ? "bg-secondary" : "bg-primary"}`} />
         {label}
       </span>
     )}
-    <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-balance ${light ? "text-primary-foreground" : "text-foreground"}`}>
+    <h2 className={`gsap-fade-up text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] text-balance font-display ${light ? "text-primary-foreground" : "text-foreground"}`}>
       {title}
     </h2>
     {description && (
-      <p className={`mt-4 text-base md:text-lg max-w-2xl leading-relaxed ${center ? "mx-auto" : ""} ${light ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
+      <p className={`gsap-fade-up mt-5 text-base md:text-lg max-w-2xl leading-relaxed ${center ? "mx-auto" : ""} ${light ? "text-primary-foreground/60" : "text-muted-foreground"}`}>
         {description}
       </p>
     )}

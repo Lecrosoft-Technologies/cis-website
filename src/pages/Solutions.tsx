@@ -1,6 +1,8 @@
 import { Cloud, Layers, HardDrive, Database, ShieldCheck, AppWindow, Monitor as MonitorIcon, Activity } from "lucide-react";
 import HeroBackground from "@/components/HeroBackground";
 import SectionHeading from "@/components/SectionHeading";
+import Marquee from "@/components/Marquee";
+import { useGsapStagger } from "@/hooks/useGsap";
 
 const solutions = [
   { icon: Cloud, title: "Cloud Computing", desc: "Scalable cloud infrastructure, migration, and managed services for enterprises of all sizes." },
@@ -13,33 +15,41 @@ const solutions = [
   { icon: Activity, title: "Monitoring Solutions", desc: "Infrastructure monitoring, alerting, and performance management tools." },
 ];
 
-const Solutions = () => (
-  <div>
-    <section className="relative py-32 md:py-40 gradient-hero overflow-hidden">
-      <HeroBackground />
-      <div className="container mx-auto px-4 relative z-10 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4">Our Solutions</h1>
-        <p className="text-primary-foreground/70 max-w-2xl mx-auto text-lg">Enterprise-grade solutions engineered for performance and reliability</p>
-      </div>
-    </section>
-
-    <section className="section-padding tech-grid">
-      <div className="container mx-auto">
-        <SectionHeading label="Solutions" title="Technology Solutions" description="We design and deploy solutions that drive business transformation." />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {solutions.map((s) => (
-            <div key={s.title} className="glass-card rounded-2xl p-6 hover-lift group">
-              <div className="w-14 h-14 rounded-2xl gradient-brand flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                <s.icon className="w-7 h-7 text-primary-foreground" />
-              </div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">{s.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-            </div>
-          ))}
+const Solutions = () => {
+  const ref = useGsapStagger();
+  return (
+    <div>
+      <section className="relative py-36 md:py-44 gradient-hero overflow-hidden">
+        <HeroBackground />
+        <div className="container mx-auto px-4 relative z-10 text-center">
+          <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] mb-5 px-4 py-1.5 rounded-full border text-secondary border-secondary/30 bg-secondary/10">
+            <span className="w-1.5 h-1.5 rounded-full bg-secondary" /> Solutions
+          </span>
+          <h1 className="text-4xl md:text-6xl font-bold text-primary-foreground mb-5 font-display">Our Solutions</h1>
+          <p className="text-primary-foreground/50 max-w-2xl mx-auto text-lg">Enterprise-grade solutions engineered for performance and reliability</p>
         </div>
-      </div>
-    </section>
-  </div>
-);
+      </section>
+
+      <Marquee items={["Cloud", "Virtualization", "Storage", "SAN", "Disaster Recovery", "Business Apps", "POS", "Monitoring"]} />
+
+      <section ref={ref} className="section-padding">
+        <div className="container mx-auto">
+          <SectionHeading label="Solutions" title="Technology Solutions" description="We design and deploy solutions that drive business transformation." />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-7">
+            {solutions.map((s) => (
+              <div key={s.title} className="gsap-stagger glass-card rounded-2xl p-7 hover-lift group">
+                <div className="w-14 h-14 rounded-2xl gradient-brand flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
+                  <s.icon className="w-7 h-7 text-primary-foreground" />
+                </div>
+                <h3 className="text-lg font-bold text-foreground mb-2 font-display">{s.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
 
 export default Solutions;
