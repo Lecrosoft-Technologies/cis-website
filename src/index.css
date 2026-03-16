@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,14 +6,14 @@
 
 @layer base {
   :root {
-    --background: 210 20% 98%;
-    --foreground: 215 50% 10%;
+    --background: 0 0% 100%;
+    --foreground: 220 20% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 50% 10%;
+    --card-foreground: 220 20% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 50% 10%;
+    --popover-foreground: 220 20% 10%;
 
     --primary: 207 100% 33%;
     --primary-foreground: 0 0% 100%;
@@ -21,36 +21,36 @@
     --secondary: 193 97% 45%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 20% 95%;
-    --muted-foreground: 215 15% 45%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 10% 46%;
 
-    --accent: 207 100% 33%;
+    --accent: 193 97% 45%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 20% 90%;
-    --input: 210 20% 90%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
     --ring: 207 100% 33%;
 
     --radius: 0.75rem;
 
     /* CIS Brand tokens */
-    --cis-navy: 215 50% 10%;
+    --cis-navy: 220 40% 8%;
     --cis-primary: 207 100% 33%;
     --cis-secondary: 193 97% 45%;
-    --cis-light: 210 20% 97%;
-    --cis-gray: 210 15% 60%;
+    --cis-light: 220 20% 97%;
+    --cis-gray: 220 10% 60%;
+    --cis-lime: 82 77% 55%;
 
     --gradient-brand: linear-gradient(135deg, hsl(207 100% 33%), hsl(193 97% 45%));
-    --gradient-brand-dark: linear-gradient(135deg, hsl(215 50% 10%), hsl(207 100% 33%));
-    --gradient-hero: linear-gradient(135deg, hsl(215 50% 10%) 0%, hsl(207 100% 33%) 50%, hsl(193 97% 45%) 100%);
-    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    --gradient-brand-dark: linear-gradient(135deg, hsl(220 40% 8%) 0%, hsl(220 40% 15%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(220 40% 6%) 0%, hsl(220 40% 12%) 50%, hsl(207 100% 20%) 100%);
 
-    --shadow-card: 0 4px 24px -4px hsl(207 100% 33% / 0.08);
-    --shadow-card-hover: 0 12px 40px -8px hsl(207 100% 33% / 0.15);
-    --shadow-elevated: 0 20px 60px -15px hsl(215 50% 10% / 0.2);
+    --shadow-card: 0 1px 3px hsl(220 40% 8% / 0.04), 0 6px 24px hsl(220 40% 8% / 0.06);
+    --shadow-card-hover: 0 8px 40px hsl(207 100% 33% / 0.12), 0 2px 8px hsl(220 40% 8% / 0.08);
+    --shadow-elevated: 0 20px 60px -15px hsl(220 40% 8% / 0.25);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -68,18 +68,23 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'DM Sans', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
   }
 }
 
 @layer components {
   .glass-card {
-    @apply bg-white/80 backdrop-blur-xl border border-white/20 shadow-[var(--shadow-card)];
+    @apply bg-card/80 backdrop-blur-xl border border-border/50;
+    box-shadow: var(--shadow-card);
   }
   .glass-card-dark {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
   .gradient-brand {
     background: var(--gradient-brand);
@@ -98,20 +103,93 @@
   }
   .tech-grid {
     background-image:
-      linear-gradient(rgba(0, 94, 169, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 94, 169, 0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
+      linear-gradient(hsl(207 100% 33% / 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(207 100% 33% / 0.02) 1px, transparent 1px);
+    background-size: 80px 80px;
   }
   .hover-lift {
-    @apply transition-all duration-300;
+    @apply transition-all duration-500 ease-out;
   }
   .hover-lift:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
     box-shadow: var(--shadow-card-hover);
   }
   .section-padding {
-    @apply py-20 md:py-28 px-4 md:px-8;
+    @apply py-24 md:py-32 px-4 md:px-8;
   }
+
+  /* Marquee */
+  .marquee-track {
+    display: flex;
+    animation: marquee-scroll 25s linear infinite;
+    width: max-content;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  /* Progress bar animation */
+  .progress-fill {
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Modern pill button */
+  .btn-pill {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm transition-all duration-300;
+  }
+  .btn-pill-primary {
+    @apply btn-pill text-primary-foreground;
+    background: var(--gradient-brand);
+  }
+  .btn-pill-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px hsl(207 100% 33% / 0.3);
+  }
+  .btn-pill-outline {
+    @apply btn-pill border-2 border-foreground/20 text-foreground;
+  }
+  .btn-pill-outline:hover {
+    @apply border-primary text-primary;
+    transform: translateY(-2px);
+  }
+  .btn-pill-light {
+    @apply btn-pill border-2 border-primary-foreground/30 text-primary-foreground;
+  }
+  .btn-pill-light:hover {
+    @apply bg-primary-foreground/10;
+    transform: translateY(-2px);
+  }
+
+  /* Image with overlay */
+  .img-overlay {
+    @apply relative overflow-hidden rounded-2xl;
+  }
+  .img-overlay img {
+    @apply w-full h-full object-cover transition-transform duration-700;
+  }
+  .img-overlay:hover img {
+    transform: scale(1.05);
+  }
+
+  /* Stat counter */
+  .stat-card {
+    @apply text-center py-8;
+  }
+  .stat-number {
+    @apply text-5xl md:text-6xl font-bold;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* Dark section */
+  .section-dark {
+    background: hsl(var(--cis-navy));
+    color: hsl(var(--primary-foreground));
+  }
+}
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 @layer utilities {
