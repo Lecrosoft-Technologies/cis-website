@@ -77,6 +77,7 @@
 }
 
 @layer components {
+  /* Glass cards */
   .glass-card {
     @apply bg-card/80 backdrop-blur-xl border border-border/50;
     box-shadow: var(--shadow-card);
@@ -86,6 +87,8 @@
     backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.08);
   }
+
+  /* Gradients */
   .gradient-brand {
     background: var(--gradient-brand);
   }
@@ -101,12 +104,16 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
+  /* Tech grid pattern */
   .tech-grid {
     background-image:
       linear-gradient(hsl(207 100% 33% / 0.02) 1px, transparent 1px),
       linear-gradient(90deg, hsl(207 100% 33% / 0.02) 1px, transparent 1px);
     background-size: 80px 80px;
   }
+
+  /* Hover effects */
   .hover-lift {
     @apply transition-all duration-500 ease-out;
   }
@@ -114,6 +121,8 @@
     transform: translateY(-6px);
     box-shadow: var(--shadow-card-hover);
   }
+
+  /* Section spacing */
   .section-padding {
     @apply py-24 md:py-32 px-4 md:px-8;
   }
@@ -133,7 +142,7 @@
     transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Modern pill button */
+  /* Pill buttons */
   .btn-pill {
     @apply inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm transition-all duration-300;
   }
@@ -159,10 +168,17 @@
     @apply bg-primary-foreground/10;
     transform: translateY(-2px);
   }
+  .btn-pill-secondary {
+    @apply btn-pill bg-secondary text-secondary-foreground;
+  }
+  .btn-pill-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px hsl(193 97% 45% / 0.3);
+  }
 
-  /* Image with overlay */
+  /* Image overlay */
   .img-overlay {
-    @apply relative overflow-hidden rounded-2xl;
+    @apply relative overflow-hidden;
   }
   .img-overlay img {
     @apply w-full h-full object-cover transition-transform duration-700;
@@ -171,7 +187,7 @@
     transform: scale(1.05);
   }
 
-  /* Stat counter */
+  /* Stat card */
   .stat-card {
     @apply text-center py-8;
   }
@@ -185,6 +201,82 @@
     background: hsl(var(--cis-navy));
     color: hsl(var(--primary-foreground));
   }
+
+  /* Curved D-shape clip for hero images */
+  .clip-d-shape {
+    clip-path: path('M0,0 L200,0 C310,0 380,80 380,200 C380,320 310,400 200,400 L0,400 Z');
+  }
+
+  /* Hero image curved segments */
+  .clip-d-top {
+    clip-path: ellipse(100% 100% at 0% 50%);
+  }
+  .clip-d-mid {
+    clip-path: ellipse(100% 100% at 0% 50%);
+  }
+  .clip-d-bot {
+    clip-path: ellipse(100% 100% at 0% 50%);
+  }
+
+  /* Diagonal section */
+  .diagonal-top {
+    clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 100%);
+  }
+  .diagonal-bottom {
+    clip-path: polygon(0 0, 100% 0, 100% 94%, 0 100%);
+  }
+
+  /* Curved section */
+  .curved-top::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: inherit;
+    border-radius: 0 0 50% 50% / 0 0 100% 100%;
+  }
+
+  /* Inner page hero */
+  .inner-hero {
+    @apply relative py-20 md:py-28 overflow-hidden;
+    background: var(--gradient-hero);
+  }
+
+  /* Service card with image */
+  .service-card-premium {
+    @apply rounded-3xl overflow-hidden bg-card border border-border/50 transition-all duration-500;
+    box-shadow: var(--shadow-card);
+  }
+  .service-card-premium:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-card-hover);
+  }
+  .service-card-premium .card-img {
+    @apply h-52 overflow-hidden;
+  }
+  .service-card-premium .card-img img {
+    @apply w-full h-full object-cover transition-transform duration-700;
+  }
+  .service-card-premium:hover .card-img img {
+    transform: scale(1.08);
+  }
+
+  /* Floating shapes */
+  .floating-dot {
+    @apply absolute rounded-full;
+    animation: float-gentle 6s ease-in-out infinite;
+  }
+
+  /* Stats with icon */
+  .stat-block {
+    @apply flex items-center gap-4;
+  }
+  .stat-block .stat-icon {
+    @apply w-12 h-12 rounded-2xl flex items-center justify-center shrink-0;
+    background: var(--gradient-brand);
+  }
 }
 
 @keyframes marquee-scroll {
@@ -192,8 +284,21 @@
   100% { transform: translateX(-50%); }
 }
 
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes blob {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .animate-blob {
+    animation: blob 8s ease-in-out infinite;
   }
 }
