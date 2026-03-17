@@ -1,8 +1,14 @@
 import { Cloud, Layers, HardDrive, Database, ShieldCheck, AppWindow, Monitor as MonitorIcon, Activity } from "lucide-react";
-import HeroBackground from "@/components/HeroBackground";
+import InnerHero from "@/components/InnerHero";
 import SectionHeading from "@/components/SectionHeading";
 import Marquee from "@/components/Marquee";
-import { useGsapStagger } from "@/hooks/useGsap";
+import HeroBackground from "@/components/HeroBackground";
+import { useGsapStagger, useGsapFadeUp } from "@/hooks/useGsap";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+
+import servicesCloud from "@/assets/services-cloud.jpg";
+import serviceDatacenter from "@/assets/service-datacenter.jpg";
 
 const solutions = [
   { icon: Cloud, title: "Cloud Computing", desc: "Scalable cloud infrastructure, migration, and managed services for enterprises of all sizes." },
@@ -17,18 +23,10 @@ const solutions = [
 
 const Solutions = () => {
   const ref = useGsapStagger();
+  const ctaRef = useGsapFadeUp();
   return (
     <div>
-      <section className="relative py-36 md:py-44 gradient-hero overflow-hidden">
-        <HeroBackground />
-        <div className="container mx-auto px-4 relative z-10 text-center">
-          <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] mb-5 px-4 py-1.5 rounded-full border text-secondary border-secondary/30 bg-secondary/10">
-            <span className="w-1.5 h-1.5 rounded-full bg-secondary" /> Solutions
-          </span>
-          <h1 className="text-4xl md:text-6xl font-bold text-primary-foreground mb-5 font-display">Our Solutions</h1>
-          <p className="text-primary-foreground/50 max-w-2xl mx-auto text-lg">Enterprise-grade solutions engineered for performance and reliability</p>
-        </div>
-      </section>
+      <InnerHero label="Solutions" title="Our Solutions" description="Enterprise-grade solutions engineered for performance and reliability" />
 
       <Marquee items={["Cloud", "Virtualization", "Storage", "SAN", "Disaster Recovery", "Business Apps", "POS", "Monitoring"]} />
 
@@ -36,8 +34,8 @@ const Solutions = () => {
         <div className="container mx-auto">
           <SectionHeading label="Solutions" title="Technology Solutions" description="We design and deploy solutions that drive business transformation." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-7">
-            {solutions.map((s) => (
-              <div key={s.title} className="gsap-stagger glass-card rounded-2xl p-7 hover-lift group">
+            {solutions.map((s, i) => (
+              <div key={s.title} className={`gsap-stagger glass-card rounded-3xl p-7 hover-lift group ${i % 2 === 1 ? 'lg:mt-6' : ''}`}>
                 <div className="w-14 h-14 rounded-2xl gradient-brand flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
                   <s.icon className="w-7 h-7 text-primary-foreground" />
                 </div>
@@ -46,6 +44,45 @@ const Solutions = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Image + text section */}
+      <section ref={ctaRef} className="section-padding bg-muted/30">
+        <div className="container mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="gsap-fade-up relative">
+              <div className="img-overlay rounded-3xl h-96 shadow-xl">
+                <img src={serviceDatacenter} alt="Data Center Solutions" />
+              </div>
+              <div className="absolute -bottom-6 -right-6 w-48 h-36 img-overlay rounded-2xl shadow-xl border-4 border-background z-10">
+                <img src={servicesCloud} alt="Cloud Solutions" />
+              </div>
+              <div className="absolute -top-4 -left-4 w-20 h-20 bg-secondary/10 rounded-2xl -z-10" />
+            </div>
+            <div>
+              <SectionHeading label="Why Our Solutions" title="Built for Enterprise Performance" center={false} />
+              <p className="gsap-fade-up text-muted-foreground leading-relaxed mb-8">
+                Our solutions are designed with enterprise-grade reliability, scalability, and security at their core. We partner with the world's leading technology providers to deliver infrastructure that grows with your business.
+              </p>
+              <Link to="/contact" className="gsap-fade-up btn-pill-primary text-xs inline-flex">
+                Get Started <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 gradient-hero" />
+        <HeroBackground />
+        <div className="container mx-auto text-center relative z-10 px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4 font-display">Need a Custom Solution?</h2>
+          <p className="text-primary-foreground/40 mb-8 max-w-lg mx-auto">Let our experts design a tailored solution for your specific business requirements.</p>
+          <Link to="/contact" className="btn-pill-primary text-sm shadow-xl">
+            Contact Our Team <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </section>
     </div>

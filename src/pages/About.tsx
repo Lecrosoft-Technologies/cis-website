@@ -1,6 +1,6 @@
-import { Target, Eye, Award, DollarSign, Clock, Users, ArrowRight } from "lucide-react";
+import { Target, Eye, Award, DollarSign, Clock, Users, ArrowRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import HeroBackground from "@/components/HeroBackground";
+import InnerHero from "@/components/InnerHero";
 import SectionHeading from "@/components/SectionHeading";
 import Marquee from "@/components/Marquee";
 import { useGsapFadeUp, useGsapStagger, useGsapCounter } from "@/hooks/useGsap";
@@ -8,6 +8,7 @@ import { useGsapFadeUp, useGsapStagger, useGsapCounter } from "@/hooks/useGsap";
 import aboutDatacenter from "@/assets/about-datacenter.jpg";
 import aboutTeam from "@/assets/about-team.jpg";
 import heroTeam from "@/assets/hero-team.jpg";
+import heroMeeting from "@/assets/hero-meeting.jpg";
 
 const values = [
   { icon: Target, title: "Mission", text: "To provide world-class IT and telecommunications solutions that empower organizations to achieve operational excellence and competitive advantage." },
@@ -25,34 +26,30 @@ const About = () => {
 
   return (
     <div>
-      {/* Hero */}
-      <section className="relative py-36 md:py-44 gradient-hero overflow-hidden">
-        <HeroBackground />
-        <div className="container mx-auto px-4 relative z-10 text-center">
-          <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] mb-5 px-4 py-1.5 rounded-full border text-secondary border-secondary/30 bg-secondary/10">
-            <span className="w-1.5 h-1.5 rounded-full bg-secondary" /> About Us
-          </span>
-          <h1 className="text-4xl md:text-6xl font-bold text-primary-foreground mb-5 font-display">About CIS Limited</h1>
-          <p className="text-primary-foreground/50 max-w-2xl mx-auto text-lg">Delivering excellence in IT solutions since 1995</p>
-        </div>
-      </section>
+      <InnerHero label="About Us" title="About CIS Limited" description="Delivering excellence in IT solutions since 1995" />
 
       <Marquee items={["Innovation", "Excellence", "Reliability", "Trust", "Quality", "Expertise", "Partnership"]} />
 
-      {/* Who We Are */}
+      {/* Who We Are - overlapping image layout */}
       <section ref={aboutRef} className="section-padding">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="gsap-fade-up grid grid-cols-2 gap-4">
-              <div className="img-overlay h-72 rounded-2xl">
-                <img src={aboutDatacenter} alt="Data Center" />
+            <div className="gsap-fade-up relative">
+              {/* Creative image layout */}
+              <div className="relative">
+                <div className="img-overlay rounded-3xl h-80 shadow-xl">
+                  <img src={aboutDatacenter} alt="Data Center" />
+                </div>
+                <div className="absolute -bottom-8 -right-4 lg:right-8 w-60 h-48 img-overlay rounded-2xl shadow-xl border-4 border-background z-10">
+                  <img src={aboutTeam} alt="Team" />
+                </div>
+                <div className="absolute -top-4 -left-4 w-48 h-36 img-overlay rounded-2xl shadow-xl border-4 border-background z-10">
+                  <img src={heroMeeting} alt="Meeting" />
+                </div>
               </div>
-              <div className="img-overlay h-72 rounded-2xl mt-8">
-                <img src={aboutTeam} alt="Team" />
-              </div>
-              <div className="img-overlay h-48 rounded-2xl col-span-2">
-                <img src={heroTeam} alt="Server Room" />
-              </div>
+              {/* Decorative shapes */}
+              <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-secondary/10 rounded-2xl -z-10" />
+              <div className="absolute -top-6 -right-2 w-16 h-16 border-2 border-primary/15 rounded-full -z-10" />
             </div>
             <div>
               <SectionHeading label="Who We Are" title="Your Trusted Technology Partner" center={false} />
@@ -64,6 +61,14 @@ const About = () => {
                   We provide End-to-End Business Solutions, Computer and Information services as well as sales and servicing of computer and telecom equipment. Our commitment to quality and innovation has made us a trusted partner for organizations across all sectors in Nigeria.
                 </p>
               </div>
+              <div className="gsap-fade-up mt-6 space-y-3">
+                {["Certified Technology Experts", "24/7 Support Available", "Enterprise-Grade Solutions"].map(item => (
+                  <div key={item} className="flex items-center gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-secondary shrink-0" />
+                    <span className="text-sm font-medium text-foreground">{item}</span>
+                  </div>
+                ))}
+              </div>
               <Link to="/contact" className="gsap-fade-up mt-8 btn-pill-primary text-xs inline-flex">
                 Get in Touch <ArrowRight className="w-4 h-4" />
               </Link>
@@ -72,9 +77,10 @@ const About = () => {
         </div>
       </section>
 
-      {/* Stats */}
-      <div ref={statsRef} className="bg-muted/50 py-16">
-        <div className="container mx-auto">
+      {/* Stats - dark section */}
+      <div ref={statsRef} className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0 gradient-hero" />
+        <div className="container mx-auto relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { num: 25, label: "Years Experience" },
@@ -82,9 +88,9 @@ const About = () => {
               { num: 200, label: "Happy Clients" },
               { num: 50, label: "Tech Experts" },
             ].map((stat) => (
-              <div key={stat.label} className="stat-card">
-                <div className="stat-number gradient-text counter-num" data-target={stat.num}>0+</div>
-                <div className="text-sm text-muted-foreground mt-2 font-medium">{stat.label}</div>
+              <div key={stat.label} className="text-center">
+                <div className="text-4xl md:text-5xl font-bold text-primary-foreground counter-num font-display" data-target={stat.num}>0+</div>
+                <div className="text-sm text-primary-foreground/40 mt-2 font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -92,12 +98,12 @@ const About = () => {
       </div>
 
       {/* Values Grid */}
-      <section ref={valuesRef} className="section-padding">
+      <section ref={valuesRef} className="section-padding bg-muted/30">
         <div className="container mx-auto">
           <SectionHeading label="Our Foundation" title="What Drives Us" />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
-            {values.map((v) => (
-              <div key={v.title} className="gsap-stagger glass-card rounded-2xl p-8 hover-lift group">
+            {values.map((v, i) => (
+              <div key={v.title} className={`gsap-stagger glass-card rounded-3xl p-8 hover-lift group ${i === 0 ? 'sm:col-span-2 lg:col-span-1' : ''}`}>
                 <div className="w-14 h-14 rounded-2xl gradient-brand flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
                   <v.icon className="w-7 h-7 text-primary-foreground" />
                 </div>

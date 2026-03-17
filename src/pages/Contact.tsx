@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { MapPin, Phone, Mail, User, Send, ArrowRight } from "lucide-react";
-import HeroBackground from "@/components/HeroBackground";
+import { MapPin, Phone, Mail, User, Send, ArrowRight, Clock } from "lucide-react";
+import InnerHero from "@/components/InnerHero";
 import SectionHeading from "@/components/SectionHeading";
 import Marquee from "@/components/Marquee";
 import { useGsapFadeUp } from "@/hooks/useGsap";
+
+import heroMeeting from "@/assets/hero-meeting.jpg";
 
 const contacts = [
   { name: "Mr. Tunde Oyefeso", role: "CEO" },
@@ -24,16 +26,7 @@ const Contact = () => {
 
   return (
     <div>
-      <section className="relative py-36 md:py-44 gradient-hero overflow-hidden">
-        <HeroBackground />
-        <div className="container mx-auto px-4 relative z-10 text-center">
-          <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] mb-5 px-4 py-1.5 rounded-full border text-secondary border-secondary/30 bg-secondary/10">
-            <span className="w-1.5 h-1.5 rounded-full bg-secondary" /> Contact
-          </span>
-          <h1 className="text-4xl md:text-6xl font-bold text-primary-foreground mb-5 font-display">Contact Us</h1>
-          <p className="text-primary-foreground/50 max-w-2xl mx-auto text-lg">Get in touch with our team</p>
-        </div>
-      </section>
+      <InnerHero label="Contact" title="Contact Us" description="Get in touch with our team" />
 
       <Marquee items={["Let's Talk", "Get a Quote", "Partnership", "Support", "Consultation"]} />
 
@@ -44,14 +37,20 @@ const Contact = () => {
             <div>
               <SectionHeading label="Get in Touch" title="We'd Love to Hear From You" center={false} />
 
-              <div className="gsap-fade-up space-y-5 mb-10">
+              {/* Image */}
+              <div className="gsap-fade-up img-overlay rounded-2xl h-48 shadow-lg mb-8">
+                <img src={heroMeeting} alt="Contact us" />
+              </div>
+
+              <div className="gsap-fade-up space-y-4 mb-10">
                 {[
                   { icon: MapPin, label: "Address", value: "6, Oyefeso Avenue, Obanikoro, Ikorodu Road\nP.O Box 505, Yaba, Lagos Nigeria" },
                   { icon: Phone, label: "Phone", value: "234-1-7616165\n234-1-7655657" },
                   { icon: Mail, label: "Email", value: "info@cislimited.com" },
+                  { icon: Clock, label: "Hours", value: "Mon - Fri: 8:00 AM - 6:00 PM" },
                 ].map((item) => (
-                  <div key={item.label} className="flex items-start gap-4 p-4 rounded-2xl hover:bg-muted/50 transition-colors">
-                    <div className="w-11 h-11 rounded-xl gradient-brand flex items-center justify-center shrink-0 shadow-lg">
+                  <div key={item.label} className="flex items-start gap-4 p-4 rounded-2xl bg-muted/50 hover:bg-muted transition-colors group">
+                    <div className="w-11 h-11 rounded-xl gradient-brand flex items-center justify-center shrink-0 shadow-lg group-hover:scale-105 transition-transform">
                       <item.icon className="w-5 h-5 text-primary-foreground" />
                     </div>
                     <div>
@@ -81,41 +80,43 @@ const Contact = () => {
             </div>
 
             {/* Form */}
-            <div className="gsap-fade-up glass-card rounded-3xl p-8 md:p-10">
-              <h3 className="text-xl font-bold text-foreground mb-7 font-display">Send a Message</h3>
-              <form onSubmit={handleSubmit} className="space-y-5">
-                {[
-                  { label: "Name", type: "text", key: "name", placeholder: "Your full name" },
-                  { label: "Email", type: "email", key: "email", placeholder: "your@email.com" },
-                  { label: "Subject", type: "text", key: "subject", placeholder: "How can we help?" },
-                ].map((field) => (
-                  <div key={field.key}>
-                    <label className="block text-sm font-semibold text-foreground mb-2 font-display">{field.label}</label>
-                    <input
-                      type={field.type}
+            <div className="gsap-fade-up">
+              <div className="glass-card rounded-3xl p-8 md:p-10 sticky top-28">
+                <h3 className="text-xl font-bold text-foreground mb-7 font-display">Send a Message</h3>
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  {[
+                    { label: "Name", type: "text", key: "name", placeholder: "Your full name" },
+                    { label: "Email", type: "email", key: "email", placeholder: "your@email.com" },
+                    { label: "Subject", type: "text", key: "subject", placeholder: "How can we help?" },
+                  ].map((field) => (
+                    <div key={field.key}>
+                      <label className="block text-sm font-semibold text-foreground mb-2 font-display">{field.label}</label>
+                      <input
+                        type={field.type}
+                        required
+                        value={form[field.key as keyof typeof form]}
+                        onChange={(e) => setForm({ ...form, [field.key]: e.target.value })}
+                        className="w-full px-5 py-3.5 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-300"
+                        placeholder={field.placeholder}
+                      />
+                    </div>
+                  ))}
+                  <div>
+                    <label className="block text-sm font-semibold text-foreground mb-2 font-display">Message</label>
+                    <textarea
                       required
-                      value={form[field.key as keyof typeof form]}
-                      onChange={(e) => setForm({ ...form, [field.key]: e.target.value })}
-                      className="w-full px-5 py-3.5 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-300"
-                      placeholder={field.placeholder}
+                      rows={4}
+                      value={form.message}
+                      onChange={(e) => setForm({ ...form, message: e.target.value })}
+                      className="w-full px-5 py-3.5 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-300 resize-none"
+                      placeholder="Tell us about your project..."
                     />
                   </div>
-                ))}
-                <div>
-                  <label className="block text-sm font-semibold text-foreground mb-2 font-display">Message</label>
-                  <textarea
-                    required
-                    rows={4}
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className="w-full px-5 py-3.5 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-300 resize-none"
-                    placeholder="Tell us about your project..."
-                  />
-                </div>
-                <button type="submit" className="w-full btn-pill-primary justify-center shadow-xl">
-                  Send Message <Send className="w-4 h-4" />
-                </button>
-              </form>
+                  <button type="submit" className="w-full btn-pill-primary justify-center shadow-xl">
+                    Send Message <Send className="w-4 h-4" />
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
