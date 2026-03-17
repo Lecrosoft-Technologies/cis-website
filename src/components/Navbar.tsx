@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, Phone, Mail } from "lucide-react";
+import { Menu, X, ChevronDown, Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -31,27 +31,46 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
+
   const isActive = (path: string) => location.pathname === path;
 
   return (
     <>
-      {/* Top bar */}
+      {/* Top Contact Bar - matches reference */}
       <div className="hidden lg:block bg-foreground text-primary-foreground/80 text-xs">
-        <div className="container mx-auto flex items-center justify-between h-9 px-4">
+        <div className="container mx-auto flex items-center justify-between h-10 px-4">
           <div className="flex items-center gap-6">
-            <span className="flex items-center gap-1.5"><Phone className="w-3 h-3" /> 234-1-7616165</span>
-            <span className="flex items-center gap-1.5"><Mail className="w-3 h-3" /> info@cislimited.com</span>
+            <a href="tel:234-1-7616165" className="flex items-center gap-1.5 hover:text-secondary transition-colors">
+              <Phone className="w-3.5 h-3.5 text-secondary" /> 234-1-7616165
+            </a>
+            <a href="mailto:info@cislimited.com" className="flex items-center gap-1.5 hover:text-secondary transition-colors">
+              <Mail className="w-3.5 h-3.5 text-secondary" /> info@cislimited.com
+            </a>
+            <span className="flex items-center gap-1.5">
+              <MapPin className="w-3.5 h-3.5 text-secondary" /> 6, Oyefeso Avenue, Obanikoro, Lagos Nigeria
+            </span>
           </div>
-          <span>6, Oyefeso Avenue, Obanikoro, Lagos Nigeria</span>
+          <div className="flex items-center gap-3">
+            {[Facebook, Twitter, Linkedin, Instagram].map((Icon, i) => (
+              <button key={i} className="w-7 h-7 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-all duration-300">
+                <Icon className="w-3 h-3" />
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
+      {/* Main Navbar */}
       <nav className={`sticky top-0 z-50 transition-all duration-500 ${
         scrolled
           ? "bg-card/95 backdrop-blur-2xl shadow-lg border-b border-border/50"
           : "bg-card/80 backdrop-blur-xl"
       }`}>
         <div className="container mx-auto flex items-center justify-between h-18 md:h-20 px-4">
+          {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <div className="w-11 h-11 rounded-xl gradient-brand flex items-center justify-center font-bold text-primary-foreground text-lg tracking-tight shadow-lg group-hover:scale-105 transition-transform">
               CIS
@@ -62,6 +81,7 @@ const Navbar = () => {
             </div>
           </Link>
 
+          {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-0.5">
             {navLinks.map((link) => (
               <div
@@ -98,6 +118,7 @@ const Navbar = () => {
             ))}
           </div>
 
+          {/* CTA Button - rounded pill matching reference */}
           <Link
             to="/contact"
             className="hidden lg:inline-flex btn-pill-primary text-xs shadow-lg"
@@ -105,6 +126,7 @@ const Navbar = () => {
             Get a Quote
           </Link>
 
+          {/* Mobile toggle */}
           <button
             className="lg:hidden p-2 text-foreground rounded-xl hover:bg-muted transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -113,6 +135,7 @@ const Navbar = () => {
           </button>
         </div>
 
+        {/* Mobile menu */}
         {mobileOpen && (
           <div className="lg:hidden bg-card border-t border-border px-4 py-6 animate-fade-in space-y-1">
             {navLinks.map((link) => (
