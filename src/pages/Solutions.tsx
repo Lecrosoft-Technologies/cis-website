@@ -1,61 +1,71 @@
-import { Cloud, Layers, HardDrive, Database, ShieldCheck, AppWindow, Monitor as MonitorIcon, Activity } from "lucide-react";
+import { Cloud, Layers, HardDrive, Database, ShieldCheck, AppWindow, Monitor as MonitorIcon, Activity, ArrowRight, CheckCircle2 } from "lucide-react";
 import InnerHero from "@/components/InnerHero";
 import SectionHeading from "@/components/SectionHeading";
 import Marquee from "@/components/Marquee";
 import HeroBackground from "@/components/HeroBackground";
-import { useGsapStagger, useGsapFadeUp } from "@/hooks/useGsap";
+import { useGsapStagger, useGsapFadeUp, useGsapScale } from "@/hooks/useGsap";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
 
 import servicesCloud from "@/assets/services-cloud.jpg";
 import serviceDatacenter from "@/assets/service-datacenter.jpg";
+import servicesNetwork from "@/assets/services-network.jpg";
+import heroStrategy from "@/assets/hero-strategy.jpg";
 
 const solutions = [
-  { icon: Cloud, title: "Cloud Computing", desc: "Scalable cloud infrastructure, migration, and managed services for enterprises of all sizes." },
-  { icon: Layers, title: "Virtualization", desc: "VMware and Hyper-V virtualization to maximize hardware utilization and reduce costs." },
-  { icon: HardDrive, title: "Network Storage", desc: "High-performance NAS and unified storage solutions for enterprise data management." },
-  { icon: Database, title: "SAN Solutions", desc: "Storage Area Network design and implementation for mission-critical workloads." },
-  { icon: ShieldCheck, title: "Disaster Recovery", desc: "Comprehensive DR planning, replication, and failover solutions." },
-  { icon: AppWindow, title: "Business Applications", desc: "ERP, CRM, and custom business application deployment and support." },
-  { icon: MonitorIcon, title: "POS Solutions", desc: "End-to-end point-of-sale systems for retail and hospitality sectors." },
-  { icon: Activity, title: "Monitoring Solutions", desc: "Infrastructure monitoring, alerting, and performance management tools." },
+  { icon: Cloud, title: "Cloud Computing", desc: "Scalable cloud infrastructure, migration, and managed services for enterprises of all sizes.", image: servicesCloud },
+  { icon: Layers, title: "Virtualization", desc: "VMware and Hyper-V virtualization to maximize hardware utilization and reduce costs.", image: serviceDatacenter },
+  { icon: HardDrive, title: "Network Storage", desc: "High-performance NAS and unified storage solutions for enterprise data management.", image: servicesNetwork },
+  { icon: Database, title: "SAN Solutions", desc: "Storage Area Network design and implementation for mission-critical workloads.", image: heroStrategy },
+  { icon: ShieldCheck, title: "Disaster Recovery", desc: "Comprehensive DR planning, replication, and failover solutions.", image: serviceDatacenter },
+  { icon: AppWindow, title: "Business Applications", desc: "ERP, CRM, and custom business application deployment and support.", image: servicesCloud },
+  { icon: MonitorIcon, title: "POS Solutions", desc: "End-to-end point-of-sale systems for retail and hospitality sectors.", image: servicesNetwork },
+  { icon: Activity, title: "Monitoring Solutions", desc: "Infrastructure monitoring, alerting, and performance management tools.", image: heroStrategy },
 ];
 
 const Solutions = () => {
   const ref = useGsapStagger();
   const ctaRef = useGsapFadeUp();
+  const featRef = useGsapScale();
   return (
     <div>
       <InnerHero label="Solutions" title="Our Solutions" description="Enterprise-grade solutions engineered for performance and reliability" />
 
       <Marquee items={["Cloud", "Virtualization", "Storage", "SAN", "Disaster Recovery", "Business Apps", "POS", "Monitoring"]} />
 
-      <section ref={ref} className="section-padding">
+      {/* Solutions grid */}
+      <section ref={ref} className="section-padding relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/3 rounded-full blur-[120px] -z-10" />
         <div className="container mx-auto">
           <SectionHeading label="Solutions" title="Technology Solutions" description="We design and deploy solutions that drive business transformation." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-7">
             {solutions.map((s, i) => (
-              <div key={s.title} className={`gsap-stagger glass-card rounded-3xl p-7 hover-lift group ${i % 2 === 1 ? 'lg:mt-6' : ''}`}>
-                <div className="w-14 h-14 rounded-2xl gradient-brand flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
-                  <s.icon className="w-7 h-7 text-primary-foreground" />
+              <div key={s.title} className={`gsap-stagger group bg-card rounded-3xl overflow-hidden border border-border/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 ${i % 2 === 1 ? 'lg:mt-6' : ''}`}>
+                <div className="h-40 overflow-hidden relative">
+                  <img src={s.image} alt={s.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
-                <h3 className="text-lg font-bold text-foreground mb-2 font-display">{s.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                <div className="p-6">
+                  <div className="w-12 h-12 rounded-xl gradient-brand flex items-center justify-center mb-4 -mt-10 relative z-10 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                    <s.icon className="w-6 h-6 text-primary-foreground" />
+                  </div>
+                  <h3 className="text-base font-bold text-foreground mb-2 font-display">{s.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Image + text section */}
-      <section ref={ctaRef} className="section-padding bg-muted/30">
+      {/* Features */}
+      <section ref={featRef} className="section-padding bg-muted/30">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="gsap-fade-up relative">
-              <div className="img-overlay rounded-3xl h-96 shadow-xl">
+              <div className="img-overlay rounded-3xl h-96 shadow-2xl overflow-hidden" style={{ borderRadius: '20px 100px 20px 100px' }}>
                 <img src={serviceDatacenter} alt="Data Center Solutions" />
               </div>
-              <div className="absolute -bottom-6 -right-6 w-48 h-36 img-overlay rounded-2xl shadow-xl border-4 border-background z-10">
+              <div className="absolute -bottom-6 -right-6 w-48 h-36 img-overlay rounded-2xl shadow-2xl border-4 border-background z-10 overflow-hidden">
                 <img src={servicesCloud} alt="Cloud Solutions" />
               </div>
               <div className="absolute -top-4 -left-4 w-20 h-20 bg-secondary/10 rounded-2xl -z-10" />
@@ -63,9 +73,19 @@ const Solutions = () => {
             <div>
               <SectionHeading label="Why Our Solutions" title="Built for Enterprise Performance" center={false} />
               <p className="gsap-fade-up text-muted-foreground leading-relaxed mb-8">
-                Our solutions are designed with enterprise-grade reliability, scalability, and security at their core. We partner with the world's leading technology providers to deliver infrastructure that grows with your business.
+                Our solutions are designed with enterprise-grade reliability, scalability, and security at their core.
               </p>
-              <Link to="/contact" className="gsap-fade-up btn-pill-primary text-xs inline-flex">
+              <div className="gsap-fade-up space-y-4 mb-8">
+                {["99.9% Uptime Guarantee", "Scalable Architecture", "24/7 Expert Support", "Industry Compliance"].map(item => (
+                  <div key={item} className="flex items-center gap-3 gsap-scale group">
+                    <div className="w-6 h-6 rounded-full gradient-brand flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-primary-foreground" />
+                    </div>
+                    <span className="text-sm font-medium text-foreground">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <Link to="/contact" className="gsap-fade-up btn-pill-primary text-xs inline-flex shadow-lg shadow-primary/20">
                 Get Started <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -80,7 +100,7 @@ const Solutions = () => {
         <div className="container mx-auto text-center relative z-10 px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4 font-display">Need a Custom Solution?</h2>
           <p className="text-primary-foreground/40 mb-8 max-w-lg mx-auto">Let our experts design a tailored solution for your specific business requirements.</p>
-          <Link to="/contact" className="btn-pill-primary text-sm shadow-xl">
+          <Link to="/contact" className="btn-pill-primary text-sm shadow-xl shadow-primary/20">
             Contact Our Team <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
