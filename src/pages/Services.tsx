@@ -51,7 +51,7 @@ const Services = () => {
       <Marquee items={["Sales", "Technology", "Consultancy", "Training", "Cloud", "Network", "Virtualization", "Storage"]} />
 
       {/* Featured services intro */}
-      <section ref={ctaRef} className="section-padding relative overflow-hidden">
+        <section ref={ctaRef} className="section-padding relative overflow-hidden">
         <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-secondary/3 rounded-full blur-[100px] -z-10" />
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
