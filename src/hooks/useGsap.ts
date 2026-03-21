@@ -50,11 +50,11 @@ export const useGsapHero = () => {
         .fromTo(".hero-title-line", { y: 80, opacity: 0, rotateX: 40 }, { y: 0, opacity: 1, rotateX: 0, duration: 1, stagger: 0.12 }, "-=0.3")
         .fromTo(".hero-desc", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, "-=0.5")
         .fromTo(".hero-buttons", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, "-=0.3")
-        .fromTo(".hero-image-frame", { scale: 0.7, opacity: 0, rotate: -5 }, { scale: 1, opacity: 1, rotate: 0, duration: 1.2, ease: "elastic.out(1, 0.6)" }, "-=0.8")
-        .fromTo(".hero-image-frame-2", { scale: 0.7, opacity: 0, rotate: 5 }, { scale: 1, opacity: 1, rotate: 0, duration: 1.2, ease: "elastic.out(1, 0.6)" }, "-=1")
+        .fromTo(".hero-image-frame", { scale: 0.7, opacity: 0, rotate: -8, x: 60 }, { scale: 1, opacity: 1, rotate: 0, x: 0, duration: 1.4, ease: "elastic.out(1, 0.5)" }, "-=0.8")
+        .fromTo(".hero-image-frame-2", { scale: 0.5, opacity: 0, rotate: 12, x: -40 }, { scale: 1, opacity: 1, rotate: 0, x: 0, duration: 1.4, ease: "elastic.out(1, 0.5)" }, "-=1.1")
         .fromTo(".hero-float", { y: 30, opacity: 0, scale: 0.5 }, { y: 0, opacity: 1, scale: 1, duration: 0.6, stagger: 0.12, ease: "back.out(2)" }, "-=0.6");
 
-      // Continuous floating animations
+      // Continuous floating
       gsap.to(".hero-image-frame", { y: -12, duration: 3, ease: "sine.inOut", yoyo: true, repeat: -1 });
       gsap.to(".hero-image-frame-2", { y: 10, duration: 3.5, ease: "sine.inOut", yoyo: true, repeat: -1, delay: 0.5 });
       gsap.to(".hero-float-card", { y: -8, duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: -1 });
