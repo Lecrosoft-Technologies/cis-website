@@ -6,33 +6,25 @@ import HeroBackground from "@/components/HeroBackground";
 import { useGsapStagger, useGsapFadeUp, useGsapScale } from "@/hooks/useGsap";
 import { Link } from "react-router-dom";
 
-import servicesCloud from "@/assets/services-cloud.jpg";
-import serviceDatacenter from "@/assets/service-datacenter.jpg";
-import servicesNetwork from "@/assets/services-network.jpg";
-import heroStrategy from "@/assets/hero-strategy.jpg";
-
 const solutions = [
-  { icon: Cloud, title: "Cloud Computing", desc: "Scalable cloud infrastructure, migration, and managed services for enterprises of all sizes.", image: servicesCloud },
-  { icon: Layers, title: "Virtualization", desc: "VMware and Hyper-V virtualization to maximize hardware utilization and reduce costs.", image: serviceDatacenter },
-  { icon: HardDrive, title: "Network Storage", desc: "High-performance NAS and unified storage solutions for enterprise data management.", image: servicesNetwork },
-  { icon: Database, title: "SAN Solutions", desc: "Storage Area Network design and implementation for mission-critical workloads.", image: heroStrategy },
-  { icon: ShieldCheck, title: "Disaster Recovery", desc: "Comprehensive DR planning, replication, and failover solutions.", image: serviceDatacenter },
-  { icon: AppWindow, title: "Business Applications", desc: "ERP, CRM, and custom business application deployment and support.", image: servicesCloud },
-  { icon: MonitorIcon, title: "POS Solutions", desc: "End-to-end point-of-sale systems for retail and hospitality sectors.", image: servicesNetwork },
-  { icon: Activity, title: "Monitoring Solutions", desc: "Infrastructure monitoring, alerting, and performance management tools.", image: heroStrategy },
+  { icon: Cloud, title: "Cloud Computing", desc: "Scalable cloud infrastructure, migration, and managed services.", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80" },
+  { icon: Layers, title: "Virtualization", desc: "VMware and Hyper-V virtualization to maximize hardware utilization.", image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80" },
+  { icon: HardDrive, title: "Network Storage", desc: "High-performance NAS and unified storage solutions.", image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&q=80" },
+  { icon: Database, title: "SAN Solutions", desc: "Storage Area Network design and implementation.", image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80" },
+  { icon: ShieldCheck, title: "Disaster Recovery", desc: "Comprehensive DR planning, replication, and failover.", image: "https://images.unsplash.com/photo-1563986768609-322da13575f2?w=600&q=80" },
+  { icon: AppWindow, title: "Business Applications", desc: "ERP, CRM, and custom business application deployment.", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80" },
+  { icon: MonitorIcon, title: "POS Solutions", desc: "End-to-end point-of-sale systems for retail.", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80" },
+  { icon: Activity, title: "Monitoring Solutions", desc: "Infrastructure monitoring, alerting, and performance tools.", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" },
 ];
 
 const Solutions = () => {
   const ref = useGsapStagger();
   const ctaRef = useGsapFadeUp();
-  const featRef = useGsapScale();
   return (
     <div>
       <InnerHero label="Solutions" title="Our Solutions" description="Enterprise-grade solutions engineered for performance and reliability" />
-
       <Marquee items={["Cloud", "Virtualization", "Storage", "SAN", "Disaster Recovery", "Business Apps", "POS", "Monitoring"]} />
 
-      {/* Solutions grid */}
       <section ref={ref} className="section-padding relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/3 rounded-full blur-[120px] -z-10" />
         <div className="container mx-auto">
@@ -42,7 +34,6 @@ const Solutions = () => {
               <div key={s.title} className={`gsap-stagger group bg-card rounded-3xl overflow-hidden border border-border/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 ${i % 2 === 1 ? 'lg:mt-6' : ''}`}>
                 <div className="h-40 overflow-hidden relative">
                   <img src={s.image} alt={s.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
                 <div className="p-6">
                   <div className="w-12 h-12 rounded-xl gradient-brand flex items-center justify-center mb-4 -mt-10 relative z-10 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
@@ -57,27 +48,23 @@ const Solutions = () => {
         </div>
       </section>
 
-      {/* Features */}
-      <section ref={featRef} className="section-padding bg-muted/30">
+      <section ref={ctaRef} className="section-padding bg-muted/30">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="gsap-fade-up relative">
               <div className="img-overlay rounded-3xl h-96 shadow-2xl overflow-hidden" style={{ borderRadius: '20px 100px 20px 100px' }}>
-                <img src={serviceDatacenter} alt="Data Center Solutions" />
+                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80" alt="Data Center" />
               </div>
               <div className="absolute -bottom-6 -right-6 w-48 h-36 img-overlay rounded-2xl shadow-2xl border-4 border-background z-10 overflow-hidden">
-                <img src={servicesCloud} alt="Cloud Solutions" />
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80" alt="Cloud" />
               </div>
-              <div className="absolute -top-4 -left-4 w-20 h-20 bg-secondary/10 rounded-2xl -z-10" />
             </div>
             <div>
               <SectionHeading label="Why Our Solutions" title="Built for Enterprise Performance" center={false} />
-              <p className="gsap-fade-up text-muted-foreground leading-relaxed mb-8">
-                Our solutions are designed with enterprise-grade reliability, scalability, and security at their core.
-              </p>
+              <p className="gsap-fade-up text-muted-foreground leading-relaxed mb-8">Our solutions are designed with enterprise-grade reliability, scalability, and security at their core.</p>
               <div className="gsap-fade-up space-y-4 mb-8">
                 {["99.9% Uptime Guarantee", "Scalable Architecture", "24/7 Expert Support", "Industry Compliance"].map(item => (
-                  <div key={item} className="flex items-center gap-3 gsap-scale group">
+                  <div key={item} className="flex items-center gap-3 group">
                     <div className="w-6 h-6 rounded-full gradient-brand flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                       <CheckCircle2 className="w-3.5 h-3.5 text-primary-foreground" />
                     </div>
@@ -85,24 +72,19 @@ const Solutions = () => {
                   </div>
                 ))}
               </div>
-              <Link to="/contact" className="gsap-fade-up btn-pill-primary text-xs inline-flex shadow-lg shadow-primary/20">
-                Get Started <ArrowRight className="w-4 h-4" />
-              </Link>
+              <Link to="/contact" className="gsap-fade-up btn-pill-primary text-xs inline-flex shadow-lg shadow-primary/20">Get Started <ArrowRight className="w-4 h-4" /></Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 gradient-hero" />
         <HeroBackground />
         <div className="container mx-auto text-center relative z-10 px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4 font-display">Need a Custom Solution?</h2>
           <p className="text-primary-foreground/40 mb-8 max-w-lg mx-auto">Let our experts design a tailored solution for your specific business requirements.</p>
-          <Link to="/contact" className="btn-pill-primary text-sm shadow-xl shadow-primary/20">
-            Contact Our Team <ArrowRight className="w-4 h-4" />
-          </Link>
+          <Link to="/contact" className="btn-pill-primary text-sm shadow-xl shadow-primary/20">Contact Our Team <ArrowRight className="w-4 h-4" /></Link>
         </div>
       </section>
     </div>

@@ -16,6 +16,7 @@ const navLinks = [
   { label: "Technologies", path: "/technologies" },
   { label: "Clients", path: "/clients" },
   { label: "Organization", path: "/organization" },
+  { label: "Blog", path: "/blog" },
   { label: "Contact", path: "/contact" },
 ];
 
