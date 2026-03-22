@@ -61,8 +61,8 @@ const Contact = () => {
                 ))}
               </div>
 
-              <h4 className="gsap-fade-up font-bold text-foreground mb-5 font-display">Contact Persons</h4>
-              <div className="gsap-fade-up grid grid-cols-2 gap-4">
+              {/* <h4 className="gsap-fade-up font-bold text-foreground mb-5 font-display">Contact Persons</h4> */}
+              {/* <div className="gsap-fade-up grid grid-cols-2 gap-4">
                 {contacts.map(c => (
                   <div key={c.name} className="glass-card rounded-2xl p-4 hover-lift group">
                     <div className="flex items-center gap-3">
@@ -76,7 +76,7 @@ const Contact = () => {
                     </div>
                   </div>
                 ))}
-              </div>
+              </div> */}
             </div>
 
             <div className="gsap-fade-up">
