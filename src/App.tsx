@@ -27,6 +27,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <PageLoader />
         <Routes>
           {/* Admin has no navbar/footer */}
           <Route path="/admin" element={<Admin />} />
