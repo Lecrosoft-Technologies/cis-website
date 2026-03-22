@@ -6,14 +6,19 @@ import HeroBackground from "@/components/HeroBackground";
 import { useGsapStagger, useGsapFadeUp, useGsapScale } from "@/hooks/useGsap";
 import { Link } from "react-router-dom";
 
+import cloudServerImg from "@/assets/cloud-server.jpg";
+import disasterRecoveryImg from "@/assets/disaster-recovery.jpg";
+import productServer from "@/assets/product-server.jpg";
+import productPos from "@/assets/product-pos.jpg";
+
 const solutions = [
-  { icon: Cloud, title: "Cloud Computing", desc: "Scalable cloud infrastructure, migration, and managed services.", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80" },
-  { icon: Layers, title: "Virtualization", desc: "VMware and Hyper-V virtualization to maximize hardware utilization.", image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80" },
+  { icon: Cloud, title: "Cloud Computing", desc: "Scalable cloud infrastructure, migration, and managed services.", image: cloudServerImg },
+  { icon: Layers, title: "Virtualization", desc: "VMware and Hyper-V virtualization to maximize hardware utilization.", image: productServer },
   { icon: HardDrive, title: "Network Storage", desc: "High-performance NAS and unified storage solutions.", image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&q=80" },
-  { icon: Database, title: "SAN Solutions", desc: "Storage Area Network design and implementation.", image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80" },
-  { icon: ShieldCheck, title: "Disaster Recovery", desc: "Comprehensive DR planning, replication, and failover.", image: "https://images.unsplash.com/photo-1563986768609-322da13575f2?w=600&q=80" },
+  { icon: Database, title: "SAN Solutions", desc: "Storage Area Network design and implementation.", image: productServer },
+  { icon: ShieldCheck, title: "Disaster Recovery", desc: "Comprehensive DR planning, replication, and failover.", image: disasterRecoveryImg },
   { icon: AppWindow, title: "Business Applications", desc: "ERP, CRM, and custom business application deployment.", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80" },
-  { icon: MonitorIcon, title: "POS Solutions", desc: "End-to-end point-of-sale systems for retail.", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80" },
+  { icon: MonitorIcon, title: "POS Solutions", desc: "End-to-end point-of-sale systems for retail.", image: productPos },
   { icon: Activity, title: "Monitoring Solutions", desc: "Infrastructure monitoring, alerting, and performance tools.", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" },
 ];
 
@@ -53,10 +58,10 @@ const Solutions = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="gsap-fade-up relative">
               <div className="img-overlay rounded-3xl h-96 shadow-2xl overflow-hidden" style={{ borderRadius: '20px 100px 20px 100px' }}>
-                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80" alt="Data Center" />
+                <img src={cloudServerImg} alt="Data Center" />
               </div>
               <div className="absolute -bottom-6 -right-6 w-48 h-36 img-overlay rounded-2xl shadow-2xl border-4 border-background z-10 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80" alt="Cloud" />
+                <img src={disasterRecoveryImg} alt="Backup Systems" />
               </div>
             </div>
             <div>

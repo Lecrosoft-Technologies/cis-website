@@ -20,17 +20,30 @@ export interface BlogPost {
   category: string;
 }
 
+import productServer from "@/assets/product-server.jpg";
+import productPrinter from "@/assets/product-printer.jpg";
+import productPos from "@/assets/product-pos.jpg";
+import productUps from "@/assets/product-ups.jpg";
+import productScanner from "@/assets/product-scanner.jpg";
+import productCopier from "@/assets/product-copier.jpg";
+import productIdPrinter from "@/assets/product-idprinter.jpg";
+import productAccessories from "@/assets/product-accessories.jpg";
+import cloudServer from "@/assets/cloud-server.jpg";
+import disasterRecovery from "@/assets/disaster-recovery.jpg";
+
+export { cloudServer, disasterRecovery };
+
 export const initialProducts: Product[] = [
-  { id: "1", title: "Servers", description: "Enterprise rack, tower, and blade servers from HP, Dell, IBM.", price: "From ₦2,500,000", category: "Hardware", image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80", badge: "Popular", featured: true },
+  { id: "1", title: "Servers", description: "Enterprise rack, tower, and blade servers from HP, Dell, IBM.", price: "From ₦2,500,000", category: "Hardware", image: productServer, badge: "Popular", featured: true },
   { id: "2", title: "Desktops", description: "Business-class desktop computers for office productivity.", price: "From ₦350,000", category: "Hardware", image: "https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=600&q=80" },
   { id: "3", title: "Laptops", description: "Professional laptops and notebooks for mobile workforce.", price: "From ₦450,000", category: "Hardware", image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&q=80", badge: "Best Seller", featured: true },
-  { id: "4", title: "Printers", description: "Laser, inkjet, and multifunction printers for all environments.", price: "From ₦120,000", category: "Peripherals", image: "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=600&q=80" },
-  { id: "5", title: "UPS / Inverters", description: "Uninterruptible power supply and inverter systems.", price: "From ₦85,000", category: "Power", image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&q=80" },
-  { id: "6", title: "Scanners", description: "Document and flatbed scanners for digitization.", price: "From ₦75,000", category: "Peripherals", image: "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=600&q=80" },
-  { id: "7", title: "Photocopiers", description: "High-volume photocopiers and multifunction devices.", price: "From ₦350,000", category: "Peripherals", image: "https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?w=600&q=80" },
-  { id: "8", title: "ID Card Printers", description: "Professional ID card printing solutions.", price: "From ₦250,000", category: "Peripherals", image: "https://images.unsplash.com/photo-1633265486064-086b219458ec?w=600&q=80" },
-  { id: "9", title: "Accessories", description: "Cables, peripherals, and computing accessories.", price: "From ₦5,000", category: "Accessories", image: "https://images.unsplash.com/photo-1625842268584-8f3296236761?w=600&q=80" },
-  { id: "10", title: "POS Terminals", description: "Point-of-sale terminals for retail and hospitality.", price: "From ₦150,000", category: "Hardware", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80", badge: "New" },
+  { id: "4", title: "Printers", description: "Laser, inkjet, and multifunction printers for all environments.", price: "From ₦120,000", category: "Peripherals", image: productPrinter },
+  { id: "5", title: "UPS / Inverters", description: "Uninterruptible power supply and inverter systems.", price: "From ₦85,000", category: "Power", image: productUps },
+  { id: "6", title: "Scanners", description: "Document and flatbed scanners for digitization.", price: "From ₦75,000", category: "Peripherals", image: productScanner },
+  { id: "7", title: "Photocopiers", description: "High-volume photocopiers and multifunction devices.", price: "From ₦350,000", category: "Peripherals", image: productCopier },
+  { id: "8", title: "ID Card Printers", description: "Professional ID card printing solutions.", price: "From ₦250,000", category: "Peripherals", image: productIdPrinter },
+  { id: "9", title: "Accessories", description: "Cables, peripherals, and computing accessories.", price: "From ₦5,000", category: "Accessories", image: productAccessories },
+  { id: "10", title: "POS Terminals", description: "Point-of-sale terminals for retail and hospitality.", price: "From ₦150,000", category: "Hardware", image: productPos, badge: "New" },
 ];
 
 export const initialBlogPosts: BlogPost[] = [
@@ -39,7 +52,7 @@ export const initialBlogPosts: BlogPost[] = [
     title: "The Future of Cloud Computing in Nigeria",
     excerpt: "How cloud adoption is transforming business operations across the country.",
     content: "Cloud computing is rapidly becoming the backbone of modern business infrastructure in Nigeria...",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80",
+    image: cloudServer,
     date: "2026-03-15",
     author: "Mr. Ayoola Akanbi",
     category: "Cloud",

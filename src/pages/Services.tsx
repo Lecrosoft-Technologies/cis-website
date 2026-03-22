@@ -10,21 +10,31 @@ import Marquee from "@/components/Marquee";
 import HeroBackground from "@/components/HeroBackground";
 import { useGsapStagger, useGsapFadeUp } from "@/hooks/useGsap";
 
+import africanConsulting from "@/assets/african-consulting.jpg";
+import africanTraining from "@/assets/african-training.jpg";
+import africanTeamMeeting from "@/assets/african-team-meeting.jpg";
+import africanWomanTech from "@/assets/african-woman-tech.jpg";
+import cloudServerImg from "@/assets/cloud-server.jpg";
+import disasterRecoveryImg from "@/assets/disaster-recovery.jpg";
+import productServer from "@/assets/product-server.jpg";
+import productPos from "@/assets/product-pos.jpg";
+import productPrinter from "@/assets/product-printer.jpg";
+
 const allServices = [
-  { icon: ShoppingCart, title: "Sales", description: "Complete hardware and software sales for enterprise and SMB clients.", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80" },
-  { icon: Cpu, title: "Technology", description: "Cutting-edge technology deployment and integration services.", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80" },
-  { icon: Lightbulb, title: "Consultancy", description: "Strategic IT consulting to align technology with business goals.", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80" },
-  { icon: GraduationCap, title: "Training", description: "Professional IT training and certification programs.", image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80" },
-  { icon: FolderKanban, title: "Project Management", description: "End-to-end project management for IT deployments.", image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80" },
+  { icon: ShoppingCart, title: "Sales", description: "Complete hardware and software sales for enterprise and SMB clients.", image: productPrinter },
+  { icon: Cpu, title: "Technology", description: "Cutting-edge technology deployment and integration services.", image: productServer },
+  { icon: Lightbulb, title: "Consultancy", description: "Strategic IT consulting to align technology with business goals.", image: africanConsulting },
+  { icon: GraduationCap, title: "Training", description: "Professional IT training and certification programs.", image: africanTraining },
+  { icon: FolderKanban, title: "Project Management", description: "End-to-end project management for IT deployments.", image: africanTeamMeeting },
   { icon: Network, title: "Network Installation", description: "LAN, WAN, and wireless network design and installation.", image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&q=80" },
-  { icon: Cloud, title: "Cloud Services", description: "Cloud migration, hosting, and managed cloud solutions.", image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80" },
-  { icon: Layers, title: "Virtualization", description: "Server and desktop virtualization solutions.", image: "https://images.unsplash.com/photo-1597852074816-d933c7d2b988?w=600&q=80" },
-  { icon: HardDrive, title: "Storage Solutions", description: "Enterprise storage and data management solutions.", image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80" },
-  { icon: ShieldCheck, title: "Disaster Recovery", description: "Business continuity and disaster recovery planning.", image: "https://images.unsplash.com/photo-1563986768609-322da13575f2?w=600&q=80" },
-  { icon: Monitor, title: "POS Systems", description: "Point-of-sale hardware and software solutions.", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80" },
-  { icon: Thermometer, title: "Environmental Monitoring", description: "Data center and facility environmental monitoring.", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" },
-  { icon: Server, title: "Hardware Sales", description: "Servers, desktops, laptops, printers, and accessories.", image: "https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=600&q=80" },
-  { icon: Code, title: "Software Solutions", description: "Enterprise software licensing and custom applications.", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80" },
+  { icon: Cloud, title: "Cloud Services", description: "Cloud migration, hosting, and managed cloud solutions.", image: cloudServerImg },
+  { icon: Layers, title: "Virtualization", description: "Server and desktop virtualization solutions.", image: productServer },
+  { icon: HardDrive, title: "Storage Solutions", description: "Enterprise storage and data management solutions.", image: productServer },
+  { icon: ShieldCheck, title: "Disaster Recovery", description: "Business continuity and disaster recovery planning.", image: disasterRecoveryImg },
+  { icon: Monitor, title: "POS Systems", description: "Point-of-sale hardware and software solutions.", image: productPos },
+  { icon: Thermometer, title: "Environmental Monitoring", description: "Data center and facility environmental monitoring.", image: cloudServerImg },
+  { icon: Server, title: "Hardware Sales", description: "Servers, desktops, laptops, printers, and accessories.", image: productServer },
+  { icon: Code, title: "Software Solutions", description: "Enterprise software licensing and custom applications.", image: africanWomanTech },
 ];
 
 const Services = () => {
@@ -54,10 +64,10 @@ const Services = () => {
             </div>
             <div className="gsap-fade-up relative">
               <div className="img-overlay rounded-3xl h-[400px] shadow-2xl overflow-hidden" style={{ borderRadius: '120px 20px 120px 20px' }}>
-                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80" alt="African professionals working" />
+                <img src={africanTeamMeeting} alt="African professionals working" />
               </div>
               <div className="absolute -bottom-6 -left-6 w-48 h-36 img-overlay rounded-2xl shadow-2xl border-4 border-background z-10 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80" alt="Consulting" />
+                <img src={africanWomanTech} alt="IT Professional" />
               </div>
             </div>
           </div>
