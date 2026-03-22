@@ -11,10 +11,11 @@ import {
   useGsapHero, useGsapFadeUp, useGsapStagger, useGsapCounter,
   useGsapParallax, useGsapScale, useGsapTextReveal,
 } from "@/hooks/useGsap";
-
+import HERO_IMG from "@/assets/hero.jpeg";
+import HERO_SECONDARY from "@/assets/hero2.png";
 // Real African business & tech images from Unsplash
-const HERO_IMG = "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80"; // African team meeting
-const HERO_SECONDARY = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80"; // African businesswoman
+// const HERO_IMG = "assets/hero.jpeg"; // African team meeting
+// const HERO_SECONDARY = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80"; // African businesswoman
 const ABOUT_DATACENTER = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80";
 const ABOUT_TEAM = "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80"; // diverse team
 const OFFICE = "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80";

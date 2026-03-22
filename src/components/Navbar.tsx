@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown, Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
-
+import logo from "@/assets/cis_logo.jpg";
 const navLinks = [
   { label: "Home", path: "/" },
   { label: "About", path: "/about" },
@@ -73,13 +73,8 @@ const Navbar = () => {
         <div className="container mx-auto flex items-center justify-between h-18 md:h-20 px-4">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-11 h-11 rounded-xl gradient-brand flex items-center justify-center font-bold text-primary-foreground text-lg tracking-tight shadow-lg group-hover:scale-105 transition-transform">
-              CIS
-            </div>
-            <div className="hidden sm:block">
-              <span className="font-bold text-sm text-foreground leading-tight block font-display">CIS Limited</span>
-              <span className="text-[10px] text-muted-foreground leading-tight block">Communication & Information Systems</span>
-            </div>
+            <img src={logo} alt="CIS Limited" className="flex items-center justify-center w-52" />
+         
           </Link>
 
           {/* Desktop Nav */}

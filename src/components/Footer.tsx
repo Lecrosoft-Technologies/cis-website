@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, ArrowUpRight, Linkedin, Twitter, Facebook, Instagram, ArrowRight } from "lucide-react";
-
+import logo from "@/assets/cis_logo.jpg";
 const Footer = () => (
   <footer className="relative overflow-hidden">
     {/* Top CTA strip */}
@@ -23,13 +23,9 @@ const Footer = () => (
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-12 h-12 rounded-xl gradient-brand flex items-center justify-center font-bold text-primary-foreground text-lg shadow-lg">
-                CIS
-              </div>
-              <div>
-                <span className="font-bold text-sm text-primary-foreground block font-display">CIS Limited</span>
-                <span className="text-[10px] text-primary-foreground/50">Since 1995</span>
-              </div>
+              <img src={logo} alt="CIS Limited" className="w-52 flex items-center justify-center" />
+             
+         
             </div>
             <p className="text-sm text-primary-foreground/50 leading-relaxed mb-6">
               End-to-End IT, Telecom & Business Technology Solutions for enterprises across Nigeria.
