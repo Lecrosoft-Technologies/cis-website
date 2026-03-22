@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Navbar from "@/components/Navbar";
+import PageLoader from "@/components/PageLoader";
 import Footer from "@/components/Footer";
 import Index from "./pages/Index";
 import About from "./pages/About";
@@ -26,6 +27,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <PageLoader />
         <Routes>
           {/* Admin has no navbar/footer */}
           <Route path="/admin" element={<Admin />} />

@@ -11,47 +11,40 @@ import {
   useGsapHero, useGsapFadeUp, useGsapStagger, useGsapCounter,
   useGsapParallax, useGsapScale, useGsapTextReveal,
 } from "@/hooks/useGsap";
-import HERO_IMG from "@/assets/hero.jpeg";
-import HERO_SECONDARY from "@/assets/hero2.png";
-// Real African business & tech images from Unsplash
-// const HERO_IMG = "assets/hero.jpeg"; // African team meeting
-// const HERO_SECONDARY = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80"; // African businesswoman
-const ABOUT_DATACENTER = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80";
-const ABOUT_TEAM = "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80"; // diverse team
-const OFFICE = "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80";
-const TEAM_WORK = "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80"; // African professionals
 
-// Service images
-const SVC_CLOUD = "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80";
-const SVC_NETWORK = "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&q=80";
-const SVC_SECURITY = "https://images.unsplash.com/photo-1563986768609-322da13575f2?w=600&q=80";
-const SVC_DATACENTER = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80";
-const SVC_CONSULT = "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80"; // consulting meeting
-const SVC_TRAINING = "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80";
 
-// Brand logos (real SVGs from logo CDN)
+import africanTeamMeeting from "@/assets/african-team-meeting.jpg";
+import africanWomanTech from "@/assets/african-woman-tech.jpg";
+import africanConsulting from "@/assets/african-consulting.jpg";
+import africanTraining from "@/assets/african-training.jpg";
+import cloudServerImg from "@/assets/cloud-server.jpg";
+import disasterRecoveryImg from "@/assets/disaster-recovery.jpg";
+import productServer from "@/assets/product-server.jpg";
+
+
+// Brand logos using reliable SVG sources
 const brandLogos: { name: string; logo: string }[] = [
-  { name: "HP", logo: "https://logo.clearbit.com/hp.com" },
-  { name: "IBM", logo: "https://logo.clearbit.com/ibm.com" },
-  { name: "Dell", logo: "https://logo.clearbit.com/dell.com" },
-  { name: "Cisco", logo: "https://logo.clearbit.com/cisco.com" },
-  { name: "Microsoft", logo: "https://logo.clearbit.com/microsoft.com" },
-  { name: "VMware", logo: "https://logo.clearbit.com/vmware.com" },
-  { name: "Oracle", logo: "https://logo.clearbit.com/oracle.com" },
-  { name: "Hitachi", logo: "https://logo.clearbit.com/hitachi.com" },
-  { name: "NetApp", logo: "https://logo.clearbit.com/netapp.com" },
-  { name: "Dell EMC", logo: "https://logo.clearbit.com/delltechnologies.com" },
-  { name: "Acer", logo: "https://logo.clearbit.com/acer.com" },
-  { name: "Toshiba", logo: "https://logo.clearbit.com/toshiba.com" },
+  { name: "HP", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/HP_logo_2012.svg/150px-HP_logo_2012.svg.png" },
+  { name: "IBM", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/200px-IBM_logo.svg.png" },
+  { name: "Dell", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Dell_Logo.svg/200px-Dell_Logo.svg.png" },
+  { name: "Cisco", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Cisco_logo_blue_2016.svg/200px-Cisco_logo_blue_2016.svg.png" },
+  { name: "Microsoft", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/200px-Microsoft_logo_%282012%29.svg.png" },
+  { name: "VMware", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Vmware.svg/200px-Vmware.svg.png" },
+  { name: "Oracle", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Oracle_logo.svg/200px-Oracle_logo.svg.png" },
+  { name: "Hitachi", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Hitachi_logo.svg/200px-Hitachi_logo.svg.png" },
+  { name: "NetApp", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/NetApp_logo.svg/200px-NetApp_logo.svg.png" },
+  { name: "Dell EMC", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Dell_EMC_logo.svg/200px-Dell_EMC_logo.svg.png" },
+  { name: "Acer", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Acer_2011.svg/200px-Acer_2011.svg.png" },
+  { name: "Toshiba", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Toshiba_logo.svg/200px-Toshiba_logo.svg.png" },
 ];
 
 const services = [
-  { icon: Cloud, title: "Cloud Services", description: "Scalable cloud infrastructure and migration solutions for modern enterprises.", image: SVC_CLOUD },
-  { icon: Server, title: "Network Installation", description: "End-to-end network design, deployment, and management services.", image: SVC_NETWORK },
-  { icon: Shield, title: "Disaster Recovery", description: "Business continuity planning and disaster recovery solutions.", image: SVC_SECURITY },
-  { icon: Cpu, title: "Virtualization", description: "Server and desktop virtualization to optimize IT resources.", image: SVC_DATACENTER },
-  { icon: Headphones, title: "Consultancy", description: "Expert IT consultancy and strategic technology advisory.", image: SVC_CONSULT },
-  { icon: GraduationCap, title: "Training", description: "Professional IT training and certification programs.", image: SVC_TRAINING },
+  { icon: Cloud, title: "Cloud Services", description: "Scalable cloud infrastructure and migration solutions for modern enterprises.", image: cloudServerImg },
+  { icon: Server, title: "Network Installation", description: "End-to-end network design, deployment, and management services.", image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&q=80" },
+  { icon: Shield, title: "Disaster Recovery", description: "Business continuity planning and disaster recovery solutions.", image: disasterRecoveryImg },
+  { icon: Cpu, title: "Virtualization", description: "Server and desktop virtualization to optimize IT resources.", image: productServer },
+  { icon: Headphones, title: "Consultancy", description: "Expert IT consultancy and strategic technology advisory.", image: africanConsulting },
+  { icon: GraduationCap, title: "Training", description: "Professional IT training and certification programs.", image: africanTraining },
 ];
 
 const marqueeItems = ["Cloud Computing", "Network Installation", "Virtualization", "Disaster Recovery", "Enterprise Solutions", "IT Consultancy", "POS Systems", "Data Center"];
@@ -88,7 +81,6 @@ const Index = () => {
         <HeroBackground />
         <div className="container mx-auto px-4 relative z-10 py-20 lg:py-0">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-            {/* Left */}
             <div>
               <div className="hero-badge inline-flex items-center gap-2 bg-primary-foreground/5 backdrop-blur-xl border border-primary-foreground/10 rounded-full px-5 py-2.5 mb-8">
                 <Sparkles className="w-3.5 h-3.5 text-secondary" />
@@ -114,18 +106,16 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Right - Image composition */}
             <div className="relative hidden lg:flex items-center justify-center" style={{ minHeight: 560 }}>
               <div className="hero-image-frame relative">
                 <div className="h-[420px] w-[380px] shadow-2xl overflow-hidden" style={{ borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%" }}>
-                  <img src={HERO_IMG} alt="African business team" className="w-full h-full object-cover" />
+                  <img src={africanTeamMeeting} alt="African business team" className="w-full h-full object-cover" />
                 </div>
               </div>
               <div className="hero-image-frame-2 absolute -bottom-4 -left-8 w-52 h-40 shadow-2xl border-4 border-background z-10 overflow-hidden" style={{ borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%" }}>
-                <img src={HERO_SECONDARY} alt="Businesswoman" className="w-full h-full object-cover" />
+                <img src={africanWomanTech} alt="African businesswoman" className="w-full h-full object-cover" />
               </div>
 
-              {/* Decorative */}
               <div className="absolute top-0 left-[30%] w-20 h-20 border-2 border-dashed border-secondary/20 rounded-full animate-spin-slow" />
               <div className="absolute bottom-[10%] right-[60%] grid grid-cols-3 gap-1.5 opacity-40">
                 {Array.from({ length: 9 }).map((_, i) => <div key={i} className="w-1.5 h-1.5 rounded-full bg-secondary" />)}
@@ -151,10 +141,10 @@ const Index = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="gsap-fade-up relative">
               <div className="grid grid-cols-12 grid-rows-6 gap-4 h-[480px]">
-                <div className="col-span-7 row-span-4 img-overlay rounded-3xl shadow-xl overflow-hidden"><img src={ABOUT_DATACENTER} alt="Data Center" /></div>
-                <div className="col-span-5 row-span-3 img-overlay rounded-3xl shadow-xl overflow-hidden"><img src={ABOUT_TEAM} alt="Team" /></div>
-                <div className="col-span-5 row-span-3 img-overlay rounded-3xl shadow-xl overflow-hidden"><img src={OFFICE} alt="Office" /></div>
-                <div className="col-span-7 row-span-2 img-overlay rounded-3xl shadow-xl overflow-hidden"><img src={TEAM_WORK} alt="Teamwork" /></div>
+                <div className="col-span-7 row-span-4 img-overlay rounded-3xl shadow-xl overflow-hidden"><img src={productServer} alt="Data Center" /></div>
+                <div className="col-span-5 row-span-3 img-overlay rounded-3xl shadow-xl overflow-hidden"><img src={africanTeamMeeting} alt="Team" /></div>
+                <div className="col-span-5 row-span-3 img-overlay rounded-3xl shadow-xl overflow-hidden"><img src={africanConsulting} alt="Consulting" /></div>
+                <div className="col-span-7 row-span-2 img-overlay rounded-3xl shadow-xl overflow-hidden"><img src={africanWomanTech} alt="Tech Professional" /></div>
               </div>
               <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary/8 rounded-3xl -z-10" />
               <div className="absolute bottom-4 right-4 bg-card/95 backdrop-blur-xl rounded-2xl p-5 shadow-2xl border border-border/50 z-20">
@@ -210,7 +200,7 @@ const Index = () => {
         </div>
       </div>
 
-      {/* ===== SERVICES — Creative card layout ===== */}
+      {/* ===== SERVICES ===== */}
       <section ref={servicesRef} className="section-padding bg-muted/30 relative overflow-hidden">
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/3 rounded-full blur-[100px] -z-10" />
         <div className="container mx-auto">
@@ -219,10 +209,8 @@ const Index = () => {
             <Link to="/services" className="btn-pill-outline text-xs mt-4 md:mt-0 self-start md:self-auto">View All Services <ArrowUpRight className="w-4 h-4" /></Link>
           </div>
 
-          {/* Creative staggered card grid — each card has unique shape */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((s, i) => {
-              // Alternate creative border-radius patterns
               const shapes = [
                 "2rem 4rem 2rem 4rem",
                 "4rem 2rem 4rem 2rem",
@@ -282,14 +270,14 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ===== PARTNERS — Real logos ===== */}
+      {/* ===== PARTNERS ===== */}
       <section ref={parallaxRef} className="section-padding">
         <div className="container mx-auto">
           <SectionHeading label="Technology Partners" title="Partnering with Global Leaders" />
           <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">
             {brandLogos.map(p => (
               <div key={p.name} className="gsap-parallax glass-card rounded-2xl h-28 flex flex-col items-center justify-center gap-2 hover-lift group cursor-default" data-speed="0.1">
-                <img src={p.logo} alt={p.name} className="h-8 w-auto object-contain grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100 transition-all duration-500" />
+                <img src={p.logo} alt={p.name} className="h-8 w-auto object-contain grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100 transition-all duration-500" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
                 <span className="text-[10px] font-semibold text-muted-foreground/50 group-hover:text-primary transition-colors">{p.name}</span>
               </div>
             ))}

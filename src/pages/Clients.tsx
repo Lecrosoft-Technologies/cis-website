@@ -6,6 +6,9 @@ import Marquee from "@/components/Marquee";
 import HeroBackground from "@/components/HeroBackground";
 import { useGsapStagger, useGsapFadeUp } from "@/hooks/useGsap";
 
+import africanTeamMeeting from "@/assets/african-team-meeting.jpg";
+import africanWomanTech from "@/assets/african-woman-tech.jpg";
+
 const clients = [
   "GNLD", "Kuramo Industries", "Intercontinental Bank", "Unity Bank",
   "Wema Bank", "Leadway Pension", "ARM Pension", "CMD",
@@ -40,10 +43,10 @@ const Clients = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="gsap-fade-up relative">
               <div className="img-overlay rounded-3xl h-80 shadow-2xl overflow-hidden" style={{ borderRadius: '20px 100px 20px 100px' }}>
-                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80" alt="Client meeting" />
+                <img src={africanTeamMeeting} alt="Client meeting" />
               </div>
               <div className="absolute -bottom-6 -right-4 w-52 h-40 img-overlay rounded-2xl shadow-2xl border-4 border-background z-10 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80" alt="Partnership" />
+                <img src={africanWomanTech} alt="Partnership" />
               </div>
             </div>
             <div>
@@ -79,7 +82,6 @@ const Clients = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
       <section className="section-padding relative overflow-hidden">
         <div className="container mx-auto">
           <SectionHeading label="Testimonials" title="What Our Clients Say" />

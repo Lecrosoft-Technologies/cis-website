@@ -6,14 +6,13 @@ import Marquee from "@/components/Marquee";
 import HeroBackground from "@/components/HeroBackground";
 import { useGsapFadeUp, useGsapStagger, useGsapCounter, useGsapScale } from "@/hooks/useGsap";
 
-// Real African business professionals from Unsplash
-const DATACENTER = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80";
-const TEAM = "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80";
-const MEETING = "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80";
-const CEO_IMG = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80"; // African businessman
-const ADMIN_IMG = "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80";
-const BD_IMG = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80"; // African businesswoman
-const SOLUTIONS_IMG = "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80";
+import africanCeo from "@/assets/african-ceo.jpg";
+import africanAdmin from "@/assets/african-admin.jpg";
+import africanBd from "@/assets/african-bd.jpg";
+import africanSolutions from "@/assets/african-solutions.jpg";
+import africanTeamMeeting from "@/assets/african-team-meeting.jpg";
+import africanConsulting from "@/assets/african-consulting.jpg";
+import productServer from "@/assets/product-server.jpg";
 
 const values = [
   { icon: Target, title: "Mission", text: "To provide world-class IT and telecommunications solutions that empower organizations to achieve operational excellence and competitive advantage." },
@@ -25,10 +24,10 @@ const values = [
 ];
 
 const team = [
-  { name: "Mr. Tunde Oyefeso", role: "CEO", image: CEO_IMG, bio: "Over 25 years of leadership in IT and telecommunications." },
-  { name: "Mr. Samuel George", role: "Admin / Finance", image: ADMIN_IMG, bio: "Expert in financial management and corporate administration." },
-  { name: "Mrs. Grace Fapohunda", role: "Business Development", image: BD_IMG, bio: "Driving strategic growth and client partnerships." },
-  { name: "Mr. Ayoola Akanbi", role: "Enterprise Solutions", image: SOLUTIONS_IMG, bio: "Specialist in enterprise architecture and IT solutions." },
+  { name: "Mr. Tunde Oyefeso", role: "CEO", image: africanCeo, bio: "Over 25 years of leadership in IT and telecommunications." },
+  { name: "Mr. Samuel George", role: "Admin / Finance", image: africanAdmin, bio: "Expert in financial management and corporate administration." },
+  { name: "Mrs. Grace Fapohunda", role: "Business Development", image: africanBd, bio: "Driving strategic growth and client partnerships." },
+  { name: "Mr. Ayoola Akanbi", role: "Enterprise Solutions", image: africanSolutions, bio: "Specialist in enterprise architecture and IT solutions." },
 ];
 
 const About = () => {
@@ -42,7 +41,6 @@ const About = () => {
       <InnerHero label="About Us" title="About CIS Limited" description="Delivering excellence in IT solutions since 1995" />
       <Marquee items={["Innovation", "Excellence", "Reliability", "Trust", "Quality", "Expertise", "Partnership"]} />
 
-      {/* Who We Are */}
       <section ref={aboutRef} className="section-padding relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/3 rounded-full blur-[120px] -z-10" />
         <div className="container mx-auto">
@@ -50,13 +48,13 @@ const About = () => {
             <div className="gsap-fade-up relative">
               <div className="relative">
                 <div className="img-overlay rounded-3xl h-[420px] shadow-2xl overflow-hidden" style={{ borderRadius: '20px 120px 20px 120px' }}>
-                  <img src={DATACENTER} alt="Data Center" />
+                  <img src={productServer} alt="Data Center" />
                 </div>
                 <div className="absolute -bottom-8 -right-4 lg:right-8 w-56 h-44 img-overlay rounded-2xl shadow-2xl border-4 border-background z-10 overflow-hidden">
-                  <img src={TEAM} alt="Team" />
+                  <img src={africanTeamMeeting} alt="Team" />
                 </div>
                 <div className="absolute -top-4 -left-4 w-44 h-32 img-overlay rounded-2xl shadow-2xl border-4 border-background z-10 overflow-hidden">
-                  <img src={MEETING} alt="Meeting" />
+                  <img src={africanConsulting} alt="Meeting" />
                 </div>
               </div>
               <div className="absolute bottom-4 left-4 bg-card/95 backdrop-blur-xl rounded-2xl p-5 shadow-2xl border border-border/50 z-20">
@@ -86,7 +84,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Stats */}
       <div ref={statsRef} className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 gradient-hero" />
         <HeroBackground />
@@ -108,7 +105,6 @@ const About = () => {
         </div>
       </div>
 
-      {/* Values */}
       <section ref={valuesRef} className="section-padding bg-muted/30 relative overflow-hidden">
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/3 rounded-full blur-[100px] -z-10" />
         <div className="container mx-auto">
@@ -127,7 +123,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team */}
       <section ref={teamRef} className="section-padding relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/3 rounded-full blur-[120px] -z-10" />
         <div className="container mx-auto">
